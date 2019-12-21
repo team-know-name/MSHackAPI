@@ -77,8 +77,14 @@ app.post("/map", (req, res) => {
         if (err) {
           throw err;
         }
-         res.send(result);
-        //res.send(mainArray);
+        //  res.send(result);
+         let minIndex=0;
+         for(let i=1;i<result.length;i++){
+            if(result[i]<result[minIndex]){
+              minIndex=i;
+            }
+         }
+        res.send(mainArray[minIndex]);
       });
     })
     .catch(err => {
