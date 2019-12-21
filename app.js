@@ -50,10 +50,9 @@ app.get("/map_get", (req, res) => {
 });
 app.post("/map", (req, res) => {
   const { start_lat, start_long, end_lat, end_long } = req.body;
-  console.log(start_lat);
 
   fetch(
-    `https://apis.mapmyindia.com/advancedmaps/v1/fxs1vleongo2371f3mcb4jsjn21ii73x/route_adv/driving/77.2333,28.6665;77.3178,28.4089?steps=true&alternatives=true`
+    `https://apis.mapmyindia.com/advancedmaps/v1/fxs1vleongo2371f3mcb4jsjn21ii73x/route_adv/driving/${start_lat},${start_long};${end_lat},${end_long}?steps=true&alternatives=true`
   )
     .then(res => res.json())
     .then(data => {
@@ -78,7 +77,8 @@ app.post("/map", (req, res) => {
         if (err) {
           throw err;
         }
-        res.send(result);
+         res.send(result);
+        //res.send(mainArray);
       });
     })
     .catch(err => {
@@ -97,6 +97,6 @@ app.post("/geocode", (req, res) => {
   });
 });
 
-app.listen(process.env.PORT || 4444, () => {
+app.listen(process.env.PORT || 7777, () => {
   console.log("Server started on http://localhost:3344");
 });

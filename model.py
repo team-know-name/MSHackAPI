@@ -24,7 +24,7 @@ def main():
         route_list = np.reshape(route_list, (len(route_list)//2, 2))
         #print(route_list)
         w = WeightOfPath()
-        print(np.sum(np.exp(-w.pathSum(route_list))*10**30))
+        print(np.exp(-np.sum(w.pathSum(route_list))/2000))
 
 if __name__ ==  "__main__":
     main()
